@@ -116,7 +116,7 @@ public class KnnPhenotype implements Phenotype {
 		
 		for(int i=0; i<nBases; i++)
 		{
-			if(MyKNN.crossoverEvaluate(_data, i, perm, this.getUsedFeatures(), _k))
+			if(MyKNN.leaveOneOutEvaluate(_data, i, perm, this.getUsedFeatures(), _k))
 			{
 				nCorrect++;
 			}

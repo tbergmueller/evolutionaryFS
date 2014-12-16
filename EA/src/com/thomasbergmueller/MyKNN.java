@@ -15,8 +15,7 @@ import javax.print.attribute.HashAttributeSet;
 
 
 public class MyKNN 
-{
-	
+{	
 	private static HashMap sortByValues(HashMap map) { 
 	       List list = new LinkedList(map.entrySet());
 	       // Defined Custom Comparator here
@@ -37,12 +36,11 @@ public class MyKNN
 	       return sortedHashMap;
 	  }
 
-	public static boolean crossoverEvaluate(ArrayList<DataInstance> traindata, int testIdx, ArrayList<Integer> permutations, int subselectCount, int K)
+	public static boolean leaveOneOutEvaluate(ArrayList<DataInstance> traindata, int testIdx, ArrayList<Integer> permutations, int subselectCount, int K)
 	{
 		
         HashMap<DataInstance,Double> unsorted = new HashMap<DataInstance,Double>();
         
-       
 		DataInstance testSample = traindata.get(testIdx);
 		
 		for(int i=0; i<traindata.size(); i++)
@@ -57,8 +55,6 @@ public class MyKNN
 		HashMap<DataInstance, Double> sorted = sortByValues(unsorted);
 		
 		
-		// find maximum
-		int k=0;
 		
 		HashMap<Integer, Integer> votes = new HashMap<Integer,Integer>();
 		
@@ -80,12 +76,19 @@ public class MyKNN
 		int maxClass = -1;
 		int maxCnt = 0;
 		
+		int k=0; 
 		for(Integer c:votes.keySet())
 		{
 			if(votes.get(c) > maxCnt)
 			{
 				maxClass = c;
 				maxCnt = votes.get(c);
+			}
+			k++;
+			
+			if(k >= K)
+			{
+				break;
 			}
 		}
 		
