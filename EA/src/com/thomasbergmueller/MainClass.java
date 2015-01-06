@@ -13,11 +13,29 @@ public class MainClass {
 
 	public static void main(String[] args) throws IOException {
 			
-		// RADAR DATA FROM 
-		// https://archive.ics.uci.edu/ml/datasets/Ionosphere
+		// The three data sets to use:
 		
+		// IONOSPHERE (TWO CLASS PROBLEM, good/bad signal)
+		// https://archive.ics.uci.edu/ml/datasets/Ionosphere
+		// number of features: 34
+		 String inputFile = "data/ionosphere_mapped.data";
+		
+		// SEMEION HANDWRITTEN DIGITS (10 CLASS PROBLEM, 0...9)
+		// https://archive.ics.uci.edu/ml/datasets/Semeion+Handwritten+Digit
+		// number of features: 256 (!!!)
+		// String inputFile = "data/semeion_mapped.data";		
+		
+		// RED WINE QUALITY (6 CLASS PROBLEM, since only scores between 3 and 8 available in the data set)
+		// https://archive.ics.uci.edu/ml/datasets/Wine+Quality
+		// number of features: 11
+		// String inputFile = "data/redwinequality_mapped.data";	
+		
+		
+		
+		// OPTIONAL WINE DATASET (INITIAL ONE):
 		// https://archive.ics.uci.edu/ml/datasets/Wine
-		String inputFile = "data/wine.data";
+		// number of features: 13
+		// String inputFile = "data/wine.data";
 		
 		
 		

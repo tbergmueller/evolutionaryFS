@@ -33,7 +33,7 @@ public class KnnPhenotype implements Phenotype {
 		
 		String[] fnameParts = pathToFile.split("/");
 		
-		if(fnameParts[fnameParts.length-1].equals("wine.data"))
+		if(fnameParts[fnameParts.length-1].equals("wine.data") || fnameParts[fnameParts.length-1].equals("ionosphere_mapped.data") || fnameParts[fnameParts.length-1].equals("semeion_mapped.data") || fnameParts[fnameParts.length-1].equals("redwinequality_mapped.data"))
 		{
 			System.out.println("Load data from " + pathToFile);
 			
