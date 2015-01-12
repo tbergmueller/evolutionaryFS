@@ -18,7 +18,7 @@ public class MainClass {
 		// IONOSPHERE (TWO CLASS PROBLEM, good/bad signal)
 		// https://archive.ics.uci.edu/ml/datasets/Ionosphere
 		// number of features: 34
-		 String inputFile = "data/ionosphere_mapped.data";
+		// String inputFile = "data/ionosphere_mapped.data";
 		
 		// SEMEION HANDWRITTEN DIGITS (10 CLASS PROBLEM, 0...9)
 		// https://archive.ics.uci.edu/ml/datasets/Semeion+Handwritten+Digit
@@ -28,7 +28,7 @@ public class MainClass {
 		// RED WINE QUALITY (6 CLASS PROBLEM, since only scores between 3 and 8 available in the data set)
 		// https://archive.ics.uci.edu/ml/datasets/Wine+Quality
 		// number of features: 11
-		// String inputFile = "data/redwinequality_mapped.data";	
+		 String inputFile = "data/redwinequality_mapped.data";	
 		
 		
 		
@@ -45,7 +45,7 @@ public class MainClass {
 		  PermChromosome chrom = new PermChromosome();				//+ create a chromosome
 
 		  // Load data
-		  KnnPhenotype knnPheno = new KnnPhenotype(inputFile, 0.4);
+		  KnnPhenotype knnPheno = new KnnPhenotype(inputFile, (int)3);
 		  
 		  
 		try {
@@ -53,7 +53,7 @@ public class MainClass {
 			//chrom.setCrossoverPoints(knnPheno.getUsedFeatures());
 			
 			//- only set to justify try statement..;-)
-//			chromX.setMutationRate(0.0);
+			chrom.setMutationRate(0.1);
 //			chromX.setSoupType(Chromosome.LAPLACE);
 //			chromX.setCrossoverPoints(2);
 // 			Utilities.setRandomSeed(88);
@@ -63,7 +63,7 @@ public class MainClass {
 //			EA.setSelection(new TournamentSelection(3));
 // 			EA.setPopulationSize(25, 50);
 			EA.setFitnessThreshold(1.0);																//o better fitness not possible
-			EA.setMaximalGenerations(100);														//o 
+			EA.setMaximalGenerations(5);														//o 
 
 			EAReporter.setReportLevel(JEvolutionReporter.VERBOSE);
 // 			EAReporter.useFitnessRepository(true);

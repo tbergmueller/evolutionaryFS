@@ -19,7 +19,7 @@ public class KnnPhenotype implements Phenotype {
 	protected double fitness;
 	protected int nBases;								// the number of elements
 	protected int nCorrect;								// the phenotypic expression
-	protected int _k=5;
+	protected int _k=1;
 		
 	
 	static ArrayList<DataInstance> _data;	
@@ -58,6 +58,39 @@ public class KnnPhenotype implements Phenotype {
 		
 		
 		_nrFeaturesToUse = (int)Math.floor((double)this.getAttributeCount() * featuresToUsePercentage);
+		
+	}
+	
+	public KnnPhenotype(String pathToFile, int nrFeaturesToUse) throws IOException 
+	{
+		
+		String[] fnameParts = pathToFile.split("/");
+		
+		if(fnameParts[fnameParts.length-1].equals("wine.data") || fnameParts[fnameParts.length-1].equals("ionosphere_mapped.data") || fnameParts[fnameParts.length-1].equals("semeion_mapped.data") || fnameParts[fnameParts.length-1].equals("redwinequality_mapped.data"))
+		{
+			System.out.println("Load data from " + pathToFile);
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(pathToFile)));
+						
+			String line;
+			
+			_data = new ArrayList<DataInstance>();
+			
+			while((line = br.readLine()) != null)
+			{
+				_data.add(new DataInstance(line));
+			}
+			
+			br.close();
+			
+		}
+		else
+		{
+			throw new IOException("Unknown data file, no parsing rule for this");
+		}
+		
+		
+		_nrFeaturesToUse = nrFeaturesToUse;
 		
 	}
 	
